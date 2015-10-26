@@ -19,11 +19,11 @@
 
 > 项目第一次实行开发实施，第一步，建立项目
 
- symfony new scrum-agile
+    symfony new scrum-agile
  
 > 对项目进行版本控制
 
- git init
+    git init
  
 
 > Symfony项目搭建需要考虑的必要元素，
