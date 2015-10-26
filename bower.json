@@ -1,0 +1,10 @@
+{
+  "name": "symfony-application",
+  "dependencies": {
+    "jquery": "1.11.*",
+    "bootstrap": "3.1.*",
+    "font-awesome": "4.1.*",
+    "jquery-ui": "~1.11.4",
+    "bootstrap-offcanvas": "~2.0.0"
+  }
+}
