@@ -11,6 +11,7 @@
             <argument type="service" id="fos_user.util.email_canonicalizer" />
             <argument type="service" id="fos_user.entity_manager" />
             <argument>%fos_user.model.user.class%</argument>
+            <argument type="service" id="knp_paginator" />
         </service>
     </services>
 </container>

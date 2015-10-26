@@ -2,34 +2,36 @@
 /**
  * Created by PhpStorm.
  * User: kendoctor
- * Date: 15/10/26
- * Time: 下午3:23
+ * Date: 15/10/11
+ * Time: 上午9:00
  */
 
-namespace Kendoctor\Bundle\AppBundle\Manager;
+namespace Gilido\Bundle\CoreBundle\Manager;
 
-use Doctrine\Common\Persistence\ObjectManager;
+
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use FOS\UserBundle\Doctrine\UserManager as BaseUserManager;
-use FOS\UserBundle\Util\CanonicalizerInterface;
+use Kendoctor\Bundle\AppBundle\Manager\ManagerInterface;
 use Knp\Component\Pager\Paginator;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
-class UserManager extends BaseUserManager implements ManagerInterface
+abstract class AbstractManager implements ManagerInterface
 {
+
+    /**
+     * @var EntityManager
+     */
+    protected $entityManager;
+
+    /** @var  string */
+    protected $entityClass;
 
     /** @var  Paginator */
     protected $knpPaginator;
 
 
-    public function __construct(EncoderFactoryInterface $encoderFactory,
-                                CanonicalizerInterface $usernameCanonicalizer,
-                                CanonicalizerInterface $emailCanonicalizer,
-                                ObjectManager $om,
-                                $class,
-                                $knpPaginator)
+    public function __construct($entityManager, $knpPaginator)
     {
-        parent::__construct($encoderFactory, $usernameCanonicalizer, $emailCanonicalizer, $om, $class);
+        $this->entityManager = $entityManager;
         $this->knpPaginator = $knpPaginator;
     }
 
@@ -40,7 +42,7 @@ class UserManager extends BaseUserManager implements ManagerInterface
      */
     public function create()
     {
-        return $this->createUser();
+        return new $this->entityClass;
     }
 
     /**
@@ -49,7 +51,9 @@ class UserManager extends BaseUserManager implements ManagerInterface
      */
     public function update($entity, $flush = true)
     {
-        $this->updateUser($entity, $flush);
+        $this->entityManager->persist($entity);
+        if ($flush)
+            $this->entityManager->flush();
     }
 
     /**
@@ -57,15 +61,13 @@ class UserManager extends BaseUserManager implements ManagerInterface
      */
     public function remove($entity)
     {
-        $this->deleteUser($entity);
+        $this->entityManager->remove($entity);
+        $this->entityManager->flush();
     }
 
-    /**
-     *
-     */
     public function flush()
     {
-        $this->objectManager->flush();
+        $this->entityManager->flush();
     }
 
     /**
@@ -83,6 +85,7 @@ class UserManager extends BaseUserManager implements ManagerInterface
         );
     }
 
+
     /**
      * 获取实体类Repository
      *
@@ -90,8 +93,9 @@ class UserManager extends BaseUserManager implements ManagerInterface
      */
     public function getRepository()
     {
-        return $this->objectManager->getRepository($this->class);
+        return $this->entityManager->getRepository($this->entityClass);
     }
+
 
     /**
      * @return Paginator
@@ -100,4 +104,5 @@ class UserManager extends BaseUserManager implements ManagerInterface
     {
         return $this->knpPaginator;
     }
+
 }
