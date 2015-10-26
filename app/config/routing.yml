@@ -10,3 +10,6 @@ app:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+
+kendoctor:
+    resource: "@KendoctorAppBundle/Resources/config/routing/main.yml"

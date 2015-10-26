@@ -9,7 +9,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * User
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Kendoctor\Bundle\AppBundle\Entity\UserRepository")
+ * @ORM\Entity(repositoryClass="Kendoctor\Bundle\AppBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {

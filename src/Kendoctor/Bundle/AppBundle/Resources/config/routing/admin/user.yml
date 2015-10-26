@@ -1,0 +1,23 @@
+kendoctor_admin_user:
+    path: /
+    defaults: { _controller: "KendoctorAppBundle:Admin/User:index" }
+
+
+kendoctor_admin_user_create:
+    path:     /create
+    defaults: { _controller: "KendoctorAppBundle:Admin/User:create" }
+    methods:  [GET, POST]
+
+
+kendoctor_admin_user_update:
+    path:     /{id}/update
+    defaults: { _controller: "KendoctorAppBundle:Admin/User:update" }
+    methods:  [GET, POST, PUT]
+
+kendoctor_admin_user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "KendoctorAppBundle:Admin/User:delete" }
+
+kendoctor_admin_user_reset_password:
+    path:     /{id}/reset-password
+    defaults: { _controller: "KendoctorAppBundle:Admin/User:resetPassword" }
