@@ -37,6 +37,35 @@
 > 采用FOSUserBundle可以快捷搭建用户以及安全功能
 
 
+###页面制作###
+
+> 采用bower来安装关联的页面制作模块、组建和JS类库，采用Grunt来搭建调试环境和输出最终发布版本
+
+###实现用户登录###
+
+> 实现步骤如下:
+
+>  * 安装FOSUserBundle
+>  * 定义User实体类并继承FOSUser提供的User类,根据不同数据库驱动类型，此处采用Doctrine
+>  * 配置config.yml和security.yml
+>  * 更新数据 ``doctrine:schema:update --force``，如果没有创建数据库，先创建
+>  * 引入路由
+>  * 默认登录地址为 localhost://app_dev.php/login
+>  * 调整和美化模版
+>  * 如果要自定义登录逻辑，两种方法，完全重写，或者继承FOSUserBundle，建议前者，比较自由。
+>  * 登录后页面导向问题，可采用替换handler来完成
+
+    main:
+        pattern: ^/
+        form_login:
+            provider: fos_userbundle
+            csrf_provider: security.csrf.token_manager
+            success_handler: kendoctor.security.handler.login_success
+
+
+   
+
+
 
 
 
