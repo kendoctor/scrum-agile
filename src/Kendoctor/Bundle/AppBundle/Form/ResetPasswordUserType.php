@@ -12,7 +12,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserResetPasswordType extends AbstractUserType {
+class ResetPasswordUserType extends AbstractUserType {
 
 
     /**

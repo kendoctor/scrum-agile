@@ -2,7 +2,8 @@
 
 namespace Kendoctor\Bundle\AppBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+use Knp\RadBundle\AppBundle\Bundle;
 
 class KendoctorAppBundle extends Bundle
 {

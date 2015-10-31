@@ -22,10 +22,18 @@
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "doctrine/doctrine-migrations-bundle": "^1.0",
         "knplabs/knp-paginator-bundle": "^2.4",
-        "stof/doctrine-extensions-bundle": "^1.2"
+        "stof/doctrine-extensions-bundle": "^1.2",
+        "knplabs/rad-bundle": "~2.5",
+        "twig/extensions": "~1.0"
+
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "behat/behat": "~3@dev",
+        "behat/mink-extension": "~2@dev",
+        "behat/mink-browserkit-driver": "*",
+        "behat/mink-selenium2-driver": "*",
+        "phpspec/phpspec": "~2@dev"
     },
     "scripts": {
         "post-install-cmd": [

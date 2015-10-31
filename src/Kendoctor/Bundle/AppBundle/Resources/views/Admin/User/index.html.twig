@@ -18,6 +18,7 @@
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
+            <th>{{ 'kendoctor.user.label.id' | trans }}</th>
             <th>{{ 'kendoctor.user.label.username' | trans }}</th>
             <th>{{ 'kendoctor.user.label.email' | trans }}</th>
             <th>{{ 'kendoctor.index.action' | trans }}</th>
@@ -26,6 +27,9 @@
         <tbody>
         {% for entity in pagination %}
             <tr>
+                <td>
+                    {{ entity.id }}
+                </td>
                 <td>
                     {{ entity.username }}
                 </td>

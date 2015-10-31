@@ -8,12 +8,15 @@
  */
 
 namespace Kendoctor\Bundle\AppBundle\Form;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserProfileType extends AbstractUserType {
+class ProfileUserType extends AbstractUserType implements ContainerAwareInterface {
 
+    protected $container;
 
     /**
      * @param FormBuilderInterface $builder
@@ -33,5 +36,15 @@ class UserProfileType extends AbstractUserType {
     public function getName()
     {
         return 'kendoctor_user_profile';
+    }
+
+    /**
+     * Sets the Container.
+     *
+     * @param ContainerInterface|null $container A ContainerInterface instance or null
+     */
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
     }
 }

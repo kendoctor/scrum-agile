@@ -1,3 +1,4 @@
 kendoctor_admin_user:
     resource: "@KendoctorAppBundle/Resources/config/routing/admin/user.yml"
     prefix: /user
+

@@ -36,6 +36,7 @@ kendoctor:
             title: 重置密码
 
         label:
+            id: 编号
             username: 用户名
             email: 邮箱
             enabled: 账户是否可用

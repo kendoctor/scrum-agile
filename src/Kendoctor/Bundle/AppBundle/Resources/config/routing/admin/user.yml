@@ -1,7 +1,8 @@
 kendoctor_admin_user:
     path: /
-    defaults: { _controller: "KendoctorAppBundle:Admin/User:index" }
-
+    defaults:
+        _controller: "KendoctorAppBundle:Admin/User:index"
+        _resources: {}
 
 kendoctor_admin_user_create:
     path:     /create

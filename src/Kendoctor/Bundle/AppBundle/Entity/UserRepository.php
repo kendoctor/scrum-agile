@@ -1,6 +1,6 @@
 <?php
 
-namespace Kendoctor\Bundle\AppBundle\Repository;
+namespace Kendoctor\Bundle\AppBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 
 /**

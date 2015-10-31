@@ -8,13 +8,14 @@
 
 namespace Kendoctor\Bundle\AppBundle\Controller\Admin;
 
-use Kendoctor\Bundle\AppBundle\Form\UserProfileType;
-use Kendoctor\Bundle\AppBundle\Form\UserResetPasswordType;
-use Kendoctor\Bundle\AppBundle\Form\UserType;
 use Kendoctor\Bundle\AppBundle\Manager\UserManager;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Knp\RadBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class UserController
+ * @package Kendoctor\Bundle\AppBundle\Controller\Admin
+ */
 class UserController extends Controller {
 
     /**
@@ -25,6 +26,10 @@ class UserController extends Controller {
         return $this->get('kendoctor.manager.user');
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction(Request $request)
     {
         $criteria = array();
@@ -35,50 +40,38 @@ class UserController extends Controller {
                 $request->query->getInt('page', 1)
             );
 
-        return $this->render('KendoctorAppBundle:Admin/User:index.html.twig', array(
-            'pagination' => $pagination
-        ));
+        return ['pagination' => $pagination];
+
     }
 
-    protected function createCreateForm($entity)
-    {
-        $form = $this->createForm(new UserType(), $entity, array(
-            'action' => $this->generateUrl('kendoctor_admin_user_create'),
-            'method' => 'POST'
-        ));
 
-        return $form;
-    }
-
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function createAction(Request $request)
     {
         $entity = $this->getManager()->createUser();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createBoundObjectForm($entity, null, array(
+            'action' => $this->generateUrl('kendoctor_admin_user_create')
+        ));
 
-        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getManager()->update($entity);
-            return $this->redirect($this->generateUrl('kendoctor_admin_user'));
+            return $this->redirectToRoute('kendoctor_admin_user_index');
         }
 
-        return $this->render('KendoctorAppBundle:Admin/User:create.html.twig', array(
+        return [
             'entity' => $entity,
             'form' => $form->createView()
-        ));
+        ];
     }
 
-    protected function createEditForm($entity)
-    {
-        $form = $this->createForm(new UserProfileType(), $entity, array(
-            'action' => $this->generateUrl('kendoctor_admin_user_update', array(
-                'id' => $entity->getId()
-            )),
-            'method' => 'PUT'
-        ));
-
-        return $form;
-    }
-
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function updateAction(Request $request, $id)
     {
         $entity = $this->getManager()
@@ -89,20 +82,27 @@ class UserController extends Controller {
             throw $this->createNotFoundException('User not found!');
         }
 
-        $form = $this->createEditForm($entity);
+        $form = $this->createBoundObjectForm($entity, 'profile', array(
+            'method' => 'PUT',
+            'action' => $this->generateUrl('kendoctor_admin_user_update', array('id' => $entity->getId()))
+        ));
 
-        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getManager()->update($entity);
-            return $this->redirect($this->generateUrl('kendoctor_admin_user'));
+            return $this->redirect($this->generateUrl('kendoctor_admin_user_index'));
         }
 
-        return $this->render('KendoctorAppBundle:Admin/User:update.html.twig', array(
+        return [
             'entity' => $entity,
             'form' => $form->createView()
-        ));
+        ];
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function deleteAction(Request $request, $id)
     {
         $entity = $this->getManager()
@@ -122,22 +122,15 @@ class UserController extends Controller {
             $this->addFlash('notice', sprintf('User %s deleted.', $entity->getUsername()));
         }
 
-        return $this->redirect($this->generateUrl('kendoctor_admin_user'));
+        return $this->redirect($this->generateUrl('kendoctor_admin_user_index'));
     }
 
 
-    protected function createResetPasswordForm($entity)
-    {
-        $form = $this->createForm(new UserResetPasswordType(), $entity, array(
-            'action' => $this->generateUrl('kendoctor_admin_user_reset_password', array(
-                'id' => $entity->getId()
-            )),
-            'method' => 'PUT'
-        ));
-
-        return $form;
-    }
-
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function resetPasswordAction(Request $request, $id)
     {
         $entity = $this->getManager()
@@ -148,18 +141,20 @@ class UserController extends Controller {
             throw $this->createNotFoundException('User not found!');
         }
 
-        $form = $this->createResetPasswordForm($entity);
+        $form = $this->createBoundObjectForm($entity, 'resetPassword', array(
+            'method' => 'PUT',
+            'action' => $this->generateUrl('kendoctor_admin_user_reset_password', array('id' => $entity->getId()))
+        ));
 
-        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getManager()->update($entity);
-            return $this->redirect($this->generateUrl('kendoctor_admin_user'));
+            return $this->redirect($this->generateUrl('kendoctor_admin_user_index'));
         }
 
-        return $this->render('KendoctorAppBundle:Admin/User:resetPassword.html.twig', array(
+        return [
             'entity' => $entity,
             'form' => $form->createView()
-        ));
+        ];
     }
 
 }

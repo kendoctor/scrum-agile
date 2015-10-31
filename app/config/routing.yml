@@ -13,3 +13,4 @@ fos_user:
 
 kendoctor:
     resource: "@KendoctorAppBundle/Resources/config/routing/main.yml"
+    type:     "rad_convention"

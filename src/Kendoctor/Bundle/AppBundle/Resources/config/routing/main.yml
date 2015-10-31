@@ -1,3 +1,31 @@
-kendoctor_admin:
-    resource: "@KendoctorAppBundle/Resources/config/routing/admin/main.yml"
-    prefix: /admin
+#kendoctor_admin:
+#    resource: "@KendoctorAppBundle/Resources/config/routing/admin/main.yml"
+#    prefix: /admin
+
+kendoctor_admin:user:
+    prefix: /admin/user
+    collections:
+        index:
+            defaults:
+                _controller: "KendoctorAppBundle:Admin/User:index"
+        create:
+            pattern: /create
+            defaults:
+                _controller: "KendoctorAppBundle:Admin/User:create"
+            methods: [ 'GET', 'POST' ]
+    resources:
+        reset_password:
+            defaults:
+                _controller: "KendoctorAppBundle:Admin/User:resetPassword"
+            methods: [ 'GET', 'PUT' ]
+
+        update:
+            pattern: /{id}/update
+            defaults:
+                _controller: "KendoctorAppBundle:Admin/User:update"
+            methods: [ 'GET', 'PUT' ]
+        delete:
+            defaults:
+                _controller: "KendoctorAppBundle:Admin/User:delete"
+            methods: [ 'GET', 'DELETE' ]
+
