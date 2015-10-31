@@ -87,4 +87,4 @@ fos_user:
     user_class: Kendoctor\Bundle\AppBundle\Entity\User
 
     service:
-        user_manager: kendoctor.manager.user
+        user_manager: kendoctor_app.entity.user_manager

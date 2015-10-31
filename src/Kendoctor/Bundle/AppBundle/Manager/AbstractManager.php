@@ -23,14 +23,15 @@ abstract class AbstractManager implements ManagerInterface
     protected $entityManager;
 
     /** @var  string */
-    protected $entityClass;
+    protected $className;
 
     /** @var  Paginator */
     protected $knpPaginator;
 
 
-    public function __construct($entityManager, $knpPaginator)
+    public function __construct($className, $entityManager, $knpPaginator)
     {
+        $this->className = $className;
         $this->entityManager = $entityManager;
         $this->knpPaginator = $knpPaginator;
     }
@@ -42,7 +43,7 @@ abstract class AbstractManager implements ManagerInterface
      */
     public function create()
     {
-        return new $this->entityClass;
+        return new $this->className;
     }
 
     /**
@@ -93,7 +94,7 @@ abstract class AbstractManager implements ManagerInterface
      */
     public function getRepository()
     {
-        return $this->entityManager->getRepository($this->entityClass);
+        return $this->entityManager->getRepository($this->className);
     }
 
 

@@ -22,15 +22,15 @@ class UserManager extends BaseUserManager implements ManagerInterface
     protected $knpPaginator;
 
 
-    public function __construct(EncoderFactoryInterface $encoderFactory,
-                                CanonicalizerInterface $usernameCanonicalizer,
-                                CanonicalizerInterface $emailCanonicalizer,
-                                ObjectManager $om,
-                                $class,
-                                $knpPaginator)
+    public function __construct($p_kendoctor_app__entity__user_class,
+                                EncoderFactoryInterface $s_security__encoder_factory,
+                                CanonicalizerInterface $s_fos_user__util__username_canonicalizer,
+                                CanonicalizerInterface $s_fos_user__util__email_canonicalizer,
+                                ObjectManager $s_fos_user__entity_manager,
+                                $s_knp_paginator)
     {
-        parent::__construct($encoderFactory, $usernameCanonicalizer, $emailCanonicalizer, $om, $class);
-        $this->knpPaginator = $knpPaginator;
+        parent::__construct($s_security__encoder_factory, $s_fos_user__util__username_canonicalizer, $s_fos_user__util__email_canonicalizer, $s_fos_user__entity_manager, $p_kendoctor_app__entity__user_class);
+        $this->knpPaginator = $s_knp_paginator;
     }
 
     /**

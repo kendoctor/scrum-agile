@@ -23,7 +23,7 @@ class UserController extends Controller {
      */
     protected function getManager()
     {
-        return $this->get('kendoctor.manager.user');
+        return $this->get('kendoctor_app.entity.user_manager');
     }
 
     /**
