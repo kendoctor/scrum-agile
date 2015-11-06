@@ -32,6 +32,6 @@ class ResetPasswordUserType extends AbstractUserType {
      */
     public function getName()
     {
-        return 'kendoctor_user_reset_password';
+        return 'kendoctor_app_reset_password_user';
     }
 }

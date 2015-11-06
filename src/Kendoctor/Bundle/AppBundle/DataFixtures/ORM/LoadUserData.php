@@ -71,6 +71,6 @@ class LoadUserData extends AbstractFixture implements ContainerAwareInterface, O
      */
     public function getManager()
     {
-        return $this->get('kendoctor.manager.user');
+        return $this->get('kendoctor_app.entity.user_manager');
     }
 }

@@ -32,6 +32,6 @@ class UserType extends AbstractUserType {
      */
     public function getName()
     {
-        return 'kendoctor_user';
+        return 'kendoctor_app_user';
     }
 }

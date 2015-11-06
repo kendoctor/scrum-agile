@@ -9,7 +9,7 @@
 namespace Kendoctor\Bundle\AppBundle\Controller\Admin;
 
 use Kendoctor\Bundle\AppBundle\Manager\UserManager;
-use Knp\RadBundle\Controller\Controller;
+use Knd\Bundle\RadBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -23,7 +23,7 @@ class UserController extends Controller {
      */
     protected function getManager()
     {
-        return $this->get('kendoctor_app.entity.user_manager');
+        return $this->get('kendoctor_app.manager.user');
     }
 
     /**
@@ -37,7 +37,8 @@ class UserController extends Controller {
         $pagination = $this->getManager()
             ->createPagination(
                 $criteria,
-                $request->query->getInt('page', 1)
+                $request->query->getInt('page', 1),
+                20
             );
 
         return ['pagination' => $pagination];
@@ -51,13 +52,15 @@ class UserController extends Controller {
      */
     public function createAction(Request $request)
     {
-        $entity = $this->getManager()->createUser();
+        $entity = $this->getManager()->create();
+
         $form = $this->createBoundObjectForm($entity, null, array(
             'action' => $this->generateUrl('kendoctor_admin_user_create')
         ));
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getManager()->update($entity);
+
+            $this->getManager()->persist($entity, true);
             return $this->redirectToRoute('kendoctor_admin_user_index');
         }
 
@@ -75,12 +78,7 @@ class UserController extends Controller {
     public function updateAction(Request $request, $id)
     {
         $entity = $this->getManager()
-            ->getRepository()
-            ->getById($id);
-
-        if (null === $entity) {
-            throw $this->createNotFoundException('User not found!');
-        }
+            ->findOr404($id);
 
         $form = $this->createBoundObjectForm($entity, 'profile', array(
             'method' => 'PUT',
@@ -106,12 +104,8 @@ class UserController extends Controller {
     public function deleteAction(Request $request, $id)
     {
         $entity = $this->getManager()
-            ->getRepository()
-            ->getById($id);
+            ->findOr404($id);
 
-        if (null === $entity) {
-            throw $this->createNotFoundException('User not found!');
-        }
 
         if ($this->getUser() === $entity) {
             $this->addFlash('notice', 'Current login user can not be deleted');
@@ -134,14 +128,9 @@ class UserController extends Controller {
     public function resetPasswordAction(Request $request, $id)
     {
         $entity = $this->getManager()
-            ->getRepository()
-            ->getById($id);
+            ->findOr404($id);
 
-        if (null === $entity) {
-            throw $this->createNotFoundException('User not found!');
-        }
-
-        $form = $this->createBoundObjectForm($entity, 'resetPassword', array(
+        $form = $this->createBoundObjectForm($entity, 'reset_password', array(
             'method' => 'PUT',
             'action' => $this->generateUrl('kendoctor_admin_user_reset_password', array('id' => $entity->getId()))
         ));

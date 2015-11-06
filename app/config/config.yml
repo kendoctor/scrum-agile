@@ -86,5 +86,3 @@ fos_user:
     firewall_name: main
     user_class: Kendoctor\Bundle\AppBundle\Entity\User
 
-    service:
-        user_manager: kendoctor_app.entity.user_manager

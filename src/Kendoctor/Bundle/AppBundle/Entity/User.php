@@ -8,7 +8,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 /**
  * User
  *
- * @ORM\Table()
+ * @ORM\Table(name = "scrum_agile_user")
  * @ORM\Entity(repositoryClass="Kendoctor\Bundle\AppBundle\Entity\UserRepository")
  */
 class User extends BaseUser

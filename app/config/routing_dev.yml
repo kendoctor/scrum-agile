@@ -17,7 +17,3 @@ _errors:
 _main:
     resource: routing.yml
 
-
-_knp_rad_assistant:
-    resource: "@KnpRadBundle/Resources/config/routing/assistant.xml"
-    prefix: /_assistant

@@ -16,7 +16,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new \Knp\RadBundle\KnpRadBundle(),
             new AppBundle\AppBundle(),
             new Kendoctor\Bundle\AppBundle\KendoctorAppBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
@@ -24,6 +23,7 @@ class AppKernel extends Kernel
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new \Knd\Bundle\RadBundle\KndRadBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

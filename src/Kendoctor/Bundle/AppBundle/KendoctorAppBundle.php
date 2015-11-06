@@ -3,7 +3,8 @@
 namespace Kendoctor\Bundle\AppBundle;
 
 
-use Knp\RadBundle\AppBundle\Bundle;
+
+use Knd\Bundle\RadBundle\Bundle\Bundle;
 
 class KendoctorAppBundle extends Bundle
 {

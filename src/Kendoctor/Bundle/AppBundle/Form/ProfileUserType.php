@@ -35,7 +35,7 @@ class ProfileUserType extends AbstractUserType implements ContainerAwareInterfac
      */
     public function getName()
     {
-        return 'kendoctor_user_profile';
+        return 'kendoctor_app_profile_user';
     }
 
     /**

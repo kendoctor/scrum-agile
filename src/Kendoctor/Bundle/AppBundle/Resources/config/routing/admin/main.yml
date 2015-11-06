@@ -2,3 +2,7 @@ kendoctor_admin_user:
     resource: "@KendoctorAppBundle/Resources/config/routing/admin/user.yml"
     prefix: /user
 
+kendoctor_admin_group:
+    resource: "@KendoctorAppBundle/Resources/config/routing/admin/group.yml"
+    prefix: /group
+
