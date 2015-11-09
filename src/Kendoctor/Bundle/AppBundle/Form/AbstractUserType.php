@@ -8,6 +8,7 @@
  */
 
 namespace Kendoctor\Bundle\AppBundle\Form;
+use Knd\Bundle\RadBundle\DependencyInjection\AutoInjectInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -16,8 +17,28 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  * Class AbstractUserType
  * @package Kendoctor\Bundle\AppBundle\Form
  */
-abstract class AbstractUserType extends AbstractType {
+abstract class AbstractUserType extends AbstractType implements AutoInjectInterface {
 
+    private $kndRadVoterStack;
+
+    public function __construct($kndRadVoterStack)
+    {
+        $this->kndRadVoterStack = $kndRadVoterStack;
+    }
+
+    public static function getConstructorParameters()
+    {
+        return array('@knd_rad.security.voter.stack');
+    }
+
+    protected function getRoles()
+    {
+        $roles = $this->kndRadVoterStack->getRoles();
+        $uppercaseRoles = array_map(function($item) {
+            return strtoupper($item);
+        }, $roles);
+        return array_combine($uppercaseRoles, $roles);
+    }
 
     /**
      * @param FormBuilderInterface $builder
@@ -35,6 +56,18 @@ abstract class AbstractUserType extends AbstractType {
             ->add('enabled', null, array(
                 'label' => 'kendoctor.user.label.enabled',
                 'required' => false,
+            ))
+            ->add('baseRoles', 'choice', array(
+                'choices' => $this->getRoles(),
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'kendoctor.user.label.roles'
+            ))
+            ->add('groups', 'entity', array(
+                'class' => 'Kendoctor\Bundle\AppBundle\Entity\Group',
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'kendoctor.user.label.groups'
             ))
         ;
     }

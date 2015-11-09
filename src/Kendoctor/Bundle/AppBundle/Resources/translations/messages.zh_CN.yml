@@ -42,12 +42,41 @@ kendoctor:
             enabled: 账户是否可用
             new_password: 密码
             new_password_confirmation: 重复密码
+            roles: 权限
+            groups: 用户组
+
         confirm:
             delete:
                 title: 确认删除用户
                 body: 用户在有关联内容时无法删除！
+    group:
+        index:
+            title: 用户组管理
+            actions:
+                edit: 编辑
+                delete: 删除
+        create:
+            title: 新增用户组
+        update:
+            title: 编辑用户组
+
+        label:
+            id: 编号
+            name: 组名
+            roles: 权限
+            users: 用户
+
     validation:
         password:
             mismatch: 密码是否匹配
 
-
+kendoctor_app_entity_group.index: 浏览用户组
+kendoctor_app_entity_group.new: 新增用户组
+kendoctor_app_entity_group.edit: 编辑用户组
+kendoctor_app_entity_group.delete: 删除用户组
+kendoctor_app_entity_user.index: 浏览用户
+kendoctor_app_entity_user.new: 新增用户
+kendoctor_app_entity_user.edit: 编辑用户
+kendoctor_app_entity_user.delete: 删除用户
+kendoctor_app_entity_user.reset_password: 修改账户密码
+kendoctor_app_entity_user.owner.reset_password: 修改自己账户密码

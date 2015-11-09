@@ -32,6 +32,8 @@ class UserController extends Controller {
      */
     public function indexAction(Request $request)
     {
+        $this->isGrantedOr403('kendoctor_app_entity_user.index', $this->getManager()->getClass());
+
         $criteria = array();
 
         $pagination = $this->getManager()
@@ -52,6 +54,8 @@ class UserController extends Controller {
      */
     public function createAction(Request $request)
     {
+        $this->isGrantedOr403('kendoctor_app_entity_user.new', $this->getManager()->getClass());
+
         $entity = $this->getManager()->create();
 
         $form = $this->createBoundObjectForm($entity, null, array(
@@ -59,7 +63,6 @@ class UserController extends Controller {
         ));
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->getManager()->persist($entity, true);
             return $this->redirectToRoute('kendoctor_admin_user_index');
         }
@@ -77,8 +80,12 @@ class UserController extends Controller {
      */
     public function updateAction(Request $request, $id)
     {
+        $this->isGrantedOr403('kendoctor_app_entity_user.edit', $this->getManager()->getClass());
+
         $entity = $this->getManager()
             ->findOr404($id);
+        //print_r($this->getUser()->getRoles());
+
 
         $form = $this->createBoundObjectForm($entity, 'profile', array(
             'method' => 'PUT',
@@ -86,8 +93,8 @@ class UserController extends Controller {
         ));
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getManager()->update($entity);
-            return $this->redirect($this->generateUrl('kendoctor_admin_user_index'));
+            $this->getManager()->persist($entity, true);
+            return $this->redirectToRoute('kendoctor_admin_user_index');
         }
 
         return [
@@ -103,6 +110,8 @@ class UserController extends Controller {
      */
     public function deleteAction(Request $request, $id)
     {
+        $this->isGrantedOr403('kendoctor_app_entity_user.delete', $this->getManager()->getClass());
+
         $entity = $this->getManager()
             ->findOr404($id);
 
@@ -112,11 +121,11 @@ class UserController extends Controller {
         }
         else
         {
-            $this->getManager()->remove($entity);
+            $this->getManager()->remove($entity, true);
             $this->addFlash('notice', sprintf('User %s deleted.', $entity->getUsername()));
         }
 
-        return $this->redirect($this->generateUrl('kendoctor_admin_user_index'));
+        return $this->redirectToRoute('kendoctor_admin_user_index');
     }
 
 
@@ -127,8 +136,11 @@ class UserController extends Controller {
      */
     public function resetPasswordAction(Request $request, $id)
     {
+
         $entity = $this->getManager()
             ->findOr404($id);
+
+        $this->isGrantedOr403('kendoctor_app_entity_user.reset_password', $entity);
 
         $form = $this->createBoundObjectForm($entity, 'reset_password', array(
             'method' => 'PUT',
@@ -136,8 +148,8 @@ class UserController extends Controller {
         ));
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getManager()->update($entity);
-            return $this->redirect($this->generateUrl('kendoctor_admin_user_index'));
+            $this->getManager()->persist($entity, true);
+            return $this->redirectToRoute('kendoctor_admin_user_index');
         }
 
         return [

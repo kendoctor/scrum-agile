@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "416d8e1c3297ac208ef0f0c6c98165c7",
+    "hash": "c21809a124a5e094be4c5dca220c2f9e",
+    "content-hash": "2dddce8a33b2111782314e3d892a6982",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -730,16 +731,16 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604"
+                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/0bcb2e79d8571787f18b7eb036ed3d004908e604",
-                "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/90b2128806bfde671b6952ab8bea493942c1fdae",
+                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae",
                 "shasum": ""
             },
             "require": {
@@ -751,7 +752,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -793,7 +794,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2014-12-20 21:24:13"
+            "time": "2015-11-06 14:35:42"
         },
         {
             "name": "doctrine/instantiator",
@@ -1348,16 +1349,16 @@
         },
         {
             "name": "kendoctor/knd-rad-bundle",
-            "version": "v1.2",
+            "version": "v1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kendoctor/KndRadBundle.git",
-                "reference": "fe6d91fd4aa0cab4c8b0220043f405e63a7d0a60"
+                "reference": "55c66605a46934e28392872295fea280bd846dcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kendoctor/KndRadBundle/zipball/fe6d91fd4aa0cab4c8b0220043f405e63a7d0a60",
-                "reference": "fe6d91fd4aa0cab4c8b0220043f405e63a7d0a60",
+                "url": "https://api.github.com/repos/kendoctor/KndRadBundle/zipball/55c66605a46934e28392872295fea280bd846dcc",
+                "reference": "55c66605a46934e28392872295fea280bd846dcc",
                 "shasum": ""
             },
             "require": {
@@ -1402,7 +1403,7 @@
                 }
             ],
             "description": "The Kendoctor Rad Edition bundle",
-            "time": "2015-11-05 16:48:36"
+            "time": "2015-11-08 16:37:07"
         },
         {
             "name": "knplabs/knp-components",
@@ -1900,20 +1901,20 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v3.0.1",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "7735fd97ff7303d9df776b8dbc970f949399abc9"
+                "reference": "21696b0daa731064c23cfb694c60a2584a7b6e93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/7735fd97ff7303d9df776b8dbc970f949399abc9",
-                "reference": "7735fd97ff7303d9df776b8dbc970f949399abc9",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/21696b0daa731064c23cfb694c60a2584a7b6e93",
+                "reference": "21696b0daa731064c23cfb694c60a2584a7b6e93",
                 "shasum": ""
             },
             "require": {
-                "symfony/console": "~2.0"
+                "symfony/console": "~2.0|~3.0"
             },
             "bin": [
                 "security-checker"
@@ -1940,7 +1941,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2015-08-11 12:11:25"
+            "time": "2015-11-07 08:07:40"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -2484,16 +2485,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "dc6df78862e1c1e1faa7bffd396d7c3179d6749d"
+                "reference": "149f8881a1df56496c37094f32d05b53e0cde37b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/dc6df78862e1c1e1faa7bffd396d7c3179d6749d",
-                "reference": "dc6df78862e1c1e1faa7bffd396d7c3179d6749d",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/149f8881a1df56496c37094f32d05b53e0cde37b",
+                "reference": "149f8881a1df56496c37094f32d05b53e0cde37b",
                 "shasum": ""
             },
             "require": {
-                "behat/gherkin": "~4.3",
+                "behat/gherkin": "~4.4",
                 "behat/transliterator": "~1.0",
                 "ext-mbstring": "*",
                 "php": ">=5.3.3",
@@ -2557,7 +2558,7 @@
                 "symfony",
                 "testing"
             ],
-            "time": "2015-08-22 11:49:54"
+            "time": "2015-11-07 19:03:37"
         },
         {
             "name": "behat/gherkin",

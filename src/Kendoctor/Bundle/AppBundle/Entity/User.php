@@ -2,6 +2,8 @@
 
 namespace Kendoctor\Bundle\AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
@@ -24,6 +26,15 @@ class User extends BaseUser
 
 
     /**
+     * @var Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Group",  inversedBy="users")
+     * @ORM\JoinTable(name="users_groups")
+     *
+     */
+    protected $groups;
+
+    /**
      * Get id
      *
      * @return integer
@@ -31,6 +42,23 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+
+    public function getBaseRoles()
+    {
+        return $this->roles;
+    }
+
+    public function setBaseRoles($roles)
+    {
+        $this->setRoles($roles);
+    }
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->groups = new ArrayCollection();
     }
 }
 

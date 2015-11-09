@@ -1,0 +1,19 @@
+{% extends 'KendoctorAppBundle:Admin:layout.html.twig' %}
+
+{% block body %}
+    <div class="inline-entity-form">
+        <blockquote>
+            <h3>{{ 'kendoctor.group.create.title' | trans }}</h3>
+            <hr/>
+            <a class="btn btn-primary" href="{{ path('kendoctor_admin_group_index') }}" class="btn btn-default btn-sm">{{ 'kendoctor.index.return' | trans }}</a>
+        </blockquote>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <blockquote>
+            <input class="btn btn-primary" type="submit" value="{{ 'kendoctor.form.submit' | trans }}"/>
+            <hr/>
+        </blockquote>
+        {{ form_end(form) }}
+
+    </div>
+{% endblock body %}

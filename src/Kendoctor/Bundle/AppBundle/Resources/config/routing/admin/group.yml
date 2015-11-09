@@ -1,0 +1,20 @@
+kendoctor_admin_group_index:
+    path: /
+    defaults:
+        _controller: "KendoctorAppBundle:Admin/Group:index"
+
+kendoctor_admin_group_create:
+    path: /create
+    defaults:
+        _controller: "KendoctorAppBundle:Admin/Group:create"
+
+kendoctor_admin_group_update:
+    path: /{id}/update
+    defaults:
+        _controller: "KendoctorAppBundle:Admin/Group:update"
+
+kendoctor_admin_group_delete:
+    path: /{id}/delete
+    defaults:
+        _controller: "KendoctorAppBundle:Admin/Group:delete"
+
