@@ -1,6 +1,6 @@
 set :application, "Scrum agile collaboration platform"
 set :domain,      "scrum-agile.cn"
-set :deploy_to,   "/var/www/scrum-agile-test"
+set :deploy_to,   "/var/www/scrum-agile"
 set :app_path,    "app"
 
 set :repository,  "https://github.com/kendoctor/scrum-agile.git"
@@ -21,12 +21,14 @@ set :user, "kendoctor"
 
 set  :keep_releases,  3
 
-set :dump_assetic_assets, true
+#set :dump_assetic_assets, true
 set :use_composer, true
+#set :update_vendors, true
 set :use_composer_tmp, true
+#set :copy_vendors, true
 
 set :shared_files, ["app/config/parameters.yml"]
-set :shared_children, [app_path + "/logs", web_path + "/uploads", "vendor" ]
+set :shared_children, [app_path + "/logs", web_path + "/uploads" ]
 
 set :writable_dirs, ["app/cache", "app/logs"]
 set :webserver_user, "www-data"

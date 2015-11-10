@@ -2,9 +2,9 @@
 
 {% block body %}
     <blockquote>
-        <h3>{{ 'kendoctor.group.index.title' | trans }}</h3>
+        <h3>{{ 'kendoctor.project.index.title' | trans }}</h3>
         <hr/>
-        <a class="btn btn-primary" href="{{ path('kendoctor_admin_group_create') }}" class="btn btn-default btn-sm">{{ 'kendoctor.group.create.title' | trans }}</a>
+        <a class="btn btn-primary" href="{{ path('kendoctor_admin_project_create') }}" class="btn btn-default btn-sm">{{ 'kendoctor.project.create.title' | trans }}</a>
     </blockquote>
 
     {% for flashMessage in app.session.flashbag.get('notice') %}
@@ -18,8 +18,8 @@
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th>{{ 'kendoctor.group.label.id' | trans }}</th>
-            <th>{{ 'kendoctor.group.label.name' | trans }}</th>
+            <th>{{ 'kendoctor.project.label.id' | trans }}</th>
+            <th>{{ 'kendoctor.project.label.title' | trans }}</th>
             <th>{{ 'kendoctor.index.action' | trans }}</th>
         </tr>
         </thead>
@@ -30,11 +30,11 @@
                     {{ entity.id }}
                 </td>
                 <td>
-                    {{ entity.name }}
+                    {{ entity.title }}
                 </td>
                 <td>
-                    <a href="{{ path('kendoctor_admin_group_update', { id: entity.id }) }}">{{ 'kendoctor.group.index.actions.edit' | trans }}</a>
-                    <a data-btn-close="{{ 'kendoctor.modal.close' | trans }}" data-btn-confirm="{{ 'kendoctor.modal.confirm' | trans }}" data-title="{{ 'kendoctor.group.confirm.delete.title' | trans }}" data-body="{{ 'kendoctor.group.confirm.delete.body' | trans }}" data-confirm="admin"  href="{{ path('kendoctor_admin_group_delete', { id: entity.id }) }}">{{ 'kendoctor.group.index.actions.delete' | trans }}</a>
+                    <a href="{{ path('kendoctor_admin_project_update', { id: entity.id }) }}">{{ 'kendoctor.project.index.actions.edit' | trans }}</a>
+                    <a data-btn-close="{{ 'kendoctor.modal.close' | trans }}" data-btn-confirm="{{ 'kendoctor.modal.confirm' | trans }}" data-title="{{ 'kendoctor.project.confirm.delete.title' | trans }}" data-body="{{ 'kendoctor.project.confirm.delete.body' | trans }}" data-confirm="admin"  href="{{ path('kendoctor_admin_project_delete', { id: entity.id }) }}">{{ 'kendoctor.project.index.actions.delete' | trans }}</a>
                 </td>
 
             </tr>

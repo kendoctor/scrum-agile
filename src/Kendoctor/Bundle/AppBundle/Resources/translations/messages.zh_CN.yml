@@ -1,6 +1,4 @@
 kendoctor:
-    project:
-        name: 敏捷开发协作平台
     security:
         logout: 注销
     pagination:
@@ -66,6 +64,28 @@ kendoctor:
             roles: 权限
             users: 用户
 
+    project:
+        name: 敏捷开发协作平台
+        index:
+            title: 项目管理
+            actions:
+                edit: 编辑
+                delete: 删除
+        create:
+            title: 新增项目
+        update:
+            title: 编辑项目
+
+        label:
+            id: 编号
+            title: 项目名称
+            description: 项目描述
+            support_email: 支持邮箱
+        confirm:
+            delete:
+                title: 确认删除项目
+                body: 如果项目存在关联内容无法删除！
+
     validation:
         password:
             mismatch: 密码是否匹配
@@ -80,3 +100,7 @@ kendoctor_app_entity_user.edit: 编辑用户
 kendoctor_app_entity_user.delete: 删除用户
 kendoctor_app_entity_user.reset_password: 修改账户密码
 kendoctor_app_entity_user.owner.reset_password: 修改自己账户密码
+kendoctor_app_entity_project.index: 浏览项目
+kendoctor_app_entity_project.new: 新增项目
+kendoctor_app_entity_project.edit: 编辑项目
+kendoctor_app_entity_project.delete: 删除项目

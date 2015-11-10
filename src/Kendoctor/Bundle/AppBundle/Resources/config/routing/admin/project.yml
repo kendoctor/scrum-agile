@@ -1,0 +1,20 @@
+kendoctor_admin_project_index:
+    path: /
+    defaults:
+        _controller: "KendoctorAppBundle:Admin/Project:index"
+
+kendoctor_admin_project_create:
+    path: /create
+    defaults:
+        _controller: "KendoctorAppBundle:Admin/Project:create"
+
+kendoctor_admin_project_update:
+    path: /{id}/update
+    defaults:
+        _controller: "KendoctorAppBundle:Admin/Project:update"
+
+kendoctor_admin_project_delete:
+    path: /{id}/delete
+    defaults:
+        _controller: "KendoctorAppBundle:Admin/Project:delete"
+
